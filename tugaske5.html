@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 5 - Rantai Metode jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f4ff, #e0ffe9);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #show-btn {
+            background: linear-gradient(135deg, #309798, #2575fc);
+            color: rgb(231, 245, 245);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        #show-btn:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
+        }
+
+        #notification {
+            width: 320px;
+            padding: 15px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            border-radius: 10px;
+            display: none;
+            opacity: 0;
+            margin: 20px auto;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>✨ Notifikasi Animasi Chaining ✨</h2>
+    <div class="container">
+        <button id="show-btn">Tampilkan Notifikasi</button>
+        <div id="notification">I Have Crush On U</div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#show-btn").click(function(){
+                $("#notification").stop(true).css({"display": "none", "opacity": 0});
+
+                $("#notification")
+                    .animate({opacity: 1, height: 'toggle'}, {duration: 600, specialEasing: {opacity: 'linear', height: 'swing'}})
+                    .delay(3000)
+                    .animate({opacity: 0, height: 'toggle'}, {duration: 600, specialEasing: {opacity: 'linear', height: 'swing'}});
+
+                $("h2").fadeOut("slow").fadeIn(2000);
+            });
+        });
+    </script>
+
+</body>
+</html>
